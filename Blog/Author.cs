@@ -8,8 +8,13 @@ namespace PostInfo
 {
     public class Author
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
 
+        public Author(string name, string surname)
+        {
+            Name = name;
+            Surname = surname;
+        }
     }
 }
