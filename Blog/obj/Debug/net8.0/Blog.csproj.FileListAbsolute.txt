@@ -1,0 +1,15 @@
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Blog.exe
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Blog.deps.json
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Blog.runtimeconfig.json
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Blog.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Blog.pdb
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.AssemblyInfoInputs.cache
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.AssemblyInfo.cs
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.csproj.CoreCompileInputs.cache
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.sourcelink.json
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\refint\Blog.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.pdb
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.genruntimeconfig.cache
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\ref\Blog.dll
