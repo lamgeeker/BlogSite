@@ -12,33 +12,27 @@ namespace Blog
     {
         
 
-        public void AddPost(string Title, string Content, Author author, List<Post> Posts, string created, int id)
+     
+        public void ShowList(List<ContentItem> list)
         {
-                
-                Post post = new Post(Title, Content, created, author, id);
-                Posts.Add(post);
-                Console.WriteLine("Пост успішно додано!");
-        
-        }
-
-        public void PostList(List<Post> Posts)
-        {
-            foreach (Post post in Posts)
+            foreach (ContentItem item in list)
             {
-                Console.WriteLine($"------------------------\nАвтор: {post.Author.Name } {post.Author.Surname} ID: {post.Id}\n{post.Title}\n{post.Content}\nЧас викладення статті:{post.CreatedAt}\n------------------------\n");
+                item.Display();
             }
         }
-        public List<Post> SortByTime(List<Post> posts)
+       
+        public List<ContentItem> SortByTime(List<ContentItem> posts)
         {
 
             return posts.OrderBy(p => p.CreatedAt).ToList();
         }
 
-        public void ShowSortedList(List<Post> posts)
+        public void ShowSortedList(List<ContentItem> posts)
         {
-            foreach (Post post in posts)
+           SortByTime(posts);
+            foreach (ContentItem item in posts)
             {
-                Console.WriteLine($"------------------------\nАвтор: {post.Author.Name} {post.Author.Surname} ID: {post.Id}\n{post.Title}\n{post.Content}\nЧас викладення статті:{post.CreatedAt}\n------------------------\n");
+                item.Display();
             }
         }
         
