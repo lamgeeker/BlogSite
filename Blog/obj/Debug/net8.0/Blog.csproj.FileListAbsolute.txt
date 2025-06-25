@@ -13,3 +13,7 @@ C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\refint\Bl
 C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.pdb
 C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.genruntimeconfig.cache
 C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\ref\Blog.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\bin\Debug\net8.0\Plugin.Payments.Weixin.dll
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.csproj.AssemblyReference.cache
+C:\Users\Dream Machines\Desktop\C# Projects\Blog\Blog\obj\Debug\net8.0\Blog.csproj.Up2Date

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using PostInfo;
 namespace file
 {
-     class FileManager
+    class FileManager
     {
         private const string filePath = @"C:\\Users\\Dream Machines\\Documents\\mCompany.txt";
         public void SaveToFile(List<ContentItem> posts)
@@ -31,17 +31,18 @@ namespace file
 
             Console.WriteLine("Пости успішно додано у файл.");
         }
-        public  List<ContentItem> Load()
+        public List<ContentItem> Load()
         {
             
-            string json = File.ReadAllText(filePath);
-            if (string.IsNullOrEmpty(json))
-            {
-                Console.WriteLine("Файл порожній!");
-                return new List<ContentItem> { };
-            }
-            Console.WriteLine("Дані успішно виведені з файлу");
-            return JsonSerializer.Deserialize<List<ContentItem>>(json) ?? new List<ContentItem>();
+                string json = File.ReadAllText(filePath);
+                if (string.IsNullOrEmpty(json))
+                {
+                    Console.WriteLine("Файл порожній!");
+                    return new List<ContentItem> { };
+                }
+                Console.WriteLine("Дані успішно виведені з файлу");
+                return JsonSerializer.Deserialize<List<ContentItem>>(json) ?? new List<ContentItem>();
+           
         }
     }
 }

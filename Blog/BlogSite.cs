@@ -36,7 +36,12 @@ namespace Blog
             }
         }
         
+        public List<ContentItem> DeleteById(List<ContentItem> posts, int id) 
+        {
+            posts.Remove(posts.Find(p => p.ID == id));
+            return posts;
+        }
 
-
+       
     }
 }

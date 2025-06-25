@@ -10,10 +10,10 @@ namespace PostInfo
     public abstract class ContentFactory
     {
         public abstract ContentItem CreateContent(string title, string content, Author author, int id);
-        
+
     }
 
-    public class AnnouncmentFactory: ContentFactory
+    public class AnnouncmentFactory : ContentFactory
     {
         public ContentItem CreateContent(string title, string content, Author author, int id, bool urgent)
         {
@@ -28,14 +28,14 @@ namespace PostInfo
 
     public class NewsItemFactory : ContentFactory
     {
-        public ContentItem CreateContent(string title, string content, Author author, int id, string category)
+        public ContentItem CreateContent(string title, string content, Author author, int id, Category category)
         {
             return new NewsItem(title, content, author, id, category);
         }
         public override ContentItem CreateContent(string title, string content, Author author, int id)
         {
 
-            return new NewsItem(title, content, author, id, "");
+            return new NewsItem(title, content, author, id, Category.Спорт);
         }
     }
 

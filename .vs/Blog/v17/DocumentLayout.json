@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\blog\\content\\contentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\content\\contentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|c:\\users\\dream machines\\desktop\\c# projects\\blog\\blog\\isearchable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\isearchable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\blog\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|c:\\users\\dream machines\\desktop\\c# projects\\blog\\blog\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\blog\\content\\contentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\content\\contentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\blog\\content\\announcment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,7 +23,7 @@
       "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\content\\newsitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|c:\\users\\dream machines\\desktop\\c# projects\\blog\\blog\\content\\contentitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\blog\\content\\contentitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CE557B4-B21E-4990-9BE1-B79A08085931}|Blog\\Blog.csproj|solutionrelative:blog\\content\\contentitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -46,22 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\Program.cs",
-              "RelativeDocumentMoniker": "Blog\\Program.cs",
-              "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\Program.cs",
-              "RelativeToolTip": "Blog\\Program.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAFkAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T09:39:38.436Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -77,103 +67,129 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ISearchable.cs",
+              "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\ISearchable.cs",
+              "RelativeDocumentMoniker": "Blog\\ISearchable.cs",
+              "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\ISearchable.cs",
+              "RelativeToolTip": "Blog\\ISearchable.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACoAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T08:59:09.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\Program.cs",
+              "RelativeDocumentMoniker": "Blog\\Program.cs",
+              "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\Program.cs",
+              "RelativeToolTip": "Blog\\Program.cs",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAH0AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T13:40:48.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ContentFactory.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\ContentFactory.cs",
               "RelativeDocumentMoniker": "Blog\\content\\ContentFactory.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\ContentFactory.cs",
               "RelativeToolTip": "Blog\\content\\ContentFactory.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwDUAAAABAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAA9wBwAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T13:52:46.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Announcment.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Announcment.cs",
               "RelativeDocumentMoniker": "Blog\\content\\Announcment.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Announcment.cs",
               "RelativeToolTip": "Blog\\content\\Announcment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAHAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T11:47:13.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "NewsItem.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\NewsItem.cs",
               "RelativeDocumentMoniker": "Blog\\content\\NewsItem.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\NewsItem.cs",
               "RelativeToolTip": "Blog\\content\\NewsItem.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAA5AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T11:46:30.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ContentItem.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\ContentItem.cs",
               "RelativeDocumentMoniker": "Blog\\content\\ContentItem.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\ContentItem.cs",
               "RelativeToolTip": "Blog\\content\\ContentItem.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAA5wAgAAAAkAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T11:41:51.031Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Post.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Post.cs",
               "RelativeDocumentMoniker": "Blog\\content\\Post.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Post.cs",
               "RelativeToolTip": "Blog\\content\\Post.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAMAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwBsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T09:44:59.77Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "FileManager.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\FileManager.cs",
               "RelativeDocumentMoniker": "Blog\\FileManager.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\FileManager.cs",
               "RelativeToolTip": "Blog\\FileManager.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAgwBgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T12:46:29.696Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "BlogSite.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\BlogSite.cs",
               "RelativeDocumentMoniker": "Blog\\BlogSite.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\BlogSite.cs",
               "RelativeToolTip": "Blog\\BlogSite.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAfAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowCgAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T09:54:31.76Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Author.cs",
               "RelativeDocumentMoniker": "Blog\\content\\Author.cs",
               "ToolTip": "C:\\Users\\Dream Machines\\Desktop\\C# Projects\\Blog\\Blog\\content\\Author.cs",
               "RelativeToolTip": "Blog\\content\\Author.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAbAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-18T09:47:41.213Z",
               "EditorCaption": ""

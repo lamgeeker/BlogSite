@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace PostInfo
 {
-    class NewsItem: ContentItem
+    [Serializable]
+    class NewsItem : ContentItem, ISearchable 
     {
-        public string Category { get; private set; }
+        public Category Category { get; protected set; }
         [JsonConstructor]
         public NewsItem(int id, string title, string content, Author author) : base(id, title, content, author)
         {
@@ -17,14 +19,16 @@ namespace PostInfo
 
         }
 
-        public NewsItem(string title, string content, Author author, int id, string category) : base(title, content, author, id)
+        public NewsItem(string title, string content, Author author, int id, Category category)
+     : base(title, content, author, id)
         {
             Category = category;
         }
         public override void Display()
         {
             Console.WriteLine("--------------------------------------");
-            Console.WriteLine("Новина!");
+            Console.WriteLine($"Новина! ");
+            Console.WriteLine($"ID: {ID}");
             Console.WriteLine($"Категорія: {Category}");
             Console.WriteLine($"Заголовок: {Title}");
             Console.WriteLine($"Контент: {Content}");
@@ -32,5 +36,25 @@ namespace PostInfo
             Console.WriteLine($"Час створення: {CreatedAt}");
             Console.WriteLine("-------------------------------------");
         }
+
+        public bool Matches(string keyword)
+        {
+            if (Title.Contains(keyword) || Content.Contains(keyword) || Category.ToString().Equals(keyword))
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public enum  Category
+    {
+        
+        Спорт,
+        Політика,
+        Розваги,
+        Культура,
+        Наука,
+        Кримінал
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace PostInfo
 {
-    class Announcment: ContentItem
+    [Serializable]
+    class Announcment : ContentItem, ISearchable
     {
         public bool IsUrgent { get; private set; }
         [JsonConstructor]
@@ -22,18 +24,28 @@ namespace PostInfo
             IsUrgent = urgent;
         }
 
-       
-        
+
+
         public override void Display()
         {
             Console.WriteLine("--------------------------------------");
-            Console.WriteLine("ОГОЛОШЕННЯ");
+            Console.WriteLine($"ОГОЛОШЕННЯ");
+            Console.WriteLine($"ID: {ID}");
             Console.WriteLine($"Терміновість: {(IsUrgent ? "❗ Терміново" : "Звичайне")}");
             Console.WriteLine($"Заголовок: {Title}");
             Console.WriteLine($"Контент: {Content}");
             Console.WriteLine($"Автор: {Author.Name} {Author.Surname}");
             Console.WriteLine($"Створено: {CreatedAt}");
             Console.WriteLine("-------------------------------------");
+        }
+
+        public bool Matches(string keyword)
+        {
+            if (Title.Contains(keyword) || Content.Contains(keyword))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

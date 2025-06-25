@@ -10,7 +10,7 @@ BlogSite blog = new BlogSite();
 
 while (true)
 {
-    Console.WriteLine("1----Додати новий пост  2-----Вивести всі пости  3-----Посортувати пости за датою створення і вивсети відсортований список\n4-----Зберегти всі пости у файл   5-----Завантажити пости з файлу");
+    Console.WriteLine("1----Додати новий пост\n2-----Вивести всі пости\n3-----Посортувати пости за датою створення і вивсети відсортований список\n4-----Зберегти всі пости у файл\n5-----Завантажити пости з файлу\n6------Знайти контент за ключовим словом\n7------Знайти контент за ID\n8------Видалити контент за ID");
     string choice = Console.ReadLine();
     Console.WriteLine();
     switch (choice)
@@ -41,7 +41,7 @@ while (true)
             }
             Console.WriteLine("Введіть заголовок статті");
             string title = Console.ReadLine();
-           
+
             Console.WriteLine("Напишіть контент статті");
             string content = Console.ReadLine();
 
@@ -58,17 +58,28 @@ while (true)
                 Console.Write("Це термінове оголошення? (так/ні): ");
                 bool urgent = Console.ReadLine().Trim().ToLower() == "y";
 
-                // Перевантажений метод з extra параметром
+              
                 item = ((AnnouncmentFactory)factory).CreateContent(title, content, author, id, urgent);
             }
-            else if(factory is NewsItemFactory)
+            else if (factory is NewsItemFactory)
             {
-                Console.WriteLine("Напишіть категорію новини");
-                string category = Console.ReadLine();
-                // Базовий метод
-                item = ((NewsItemFactory)factory).CreateContent(title, content, author, id, category);
+                Console.WriteLine("Оберіть категорію новини:");
+                var categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList();
+
+                for (int i = 0; i < categories.Count; i++)
+                {
+                    Console.WriteLine($"{i} - {categories[i]}");
+                }
+                int selectedIndex;
+                while (!int.TryParse(Console.ReadLine(), out selectedIndex) || selectedIndex < 0 || selectedIndex >= categories.Count)
+                {
+                    Console.WriteLine("Неправильний вибір. Спробуйте ще раз:");
+                }
+                Category selectedCategory = categories[selectedIndex];
+              
+                item = ((NewsItemFactory)factory).CreateContent(title, content, author, id, selectedCategory);
             }
-            else if(factory is PostFactory)
+            else if (factory is PostFactory)
             {
                 Console.WriteLine("Напишіть хештег до поста");
                 string hashteg = Console.ReadLine();
@@ -83,19 +94,38 @@ while (true)
             break;
 
         case "2":
-          blog.ShowList(posts);
+            blog.ShowList(posts);
             break;
 
         case "3":
             blog.ShowSortedList(posts);
             break;
-             case "4":
+        case "4":
             fileManager.SaveToFile(posts);
             break;
-            case "5":
-            posts = fileManager.Load();
+        case "5":
+            try
+            {
+                posts = fileManager.Load();
+            }
+            catch(Exception ex) { Console.WriteLine(ex.Message); }
             break;
-            default:
+            case "6":
+            Console.WriteLine("Введіть ключове слово, за яким буде здійснено пошук контенту");
+            string word = Console.ReadLine();
+            blog.ShowList(SearchHelper.SearchByWord(posts, word));
+            break;
+        case "7":
+            Console.WriteLine("Введіть ID, за яким буде здійснений пошук контенту");
+            int n = Convert.ToInt32(Console.ReadLine());
+            blog.ShowList(SearchHelper.SearchById(posts, n));
+            break;
+        case "8":
+            Console.WriteLine("Введіть ID, за яким буде видалений контент");
+            int m = Convert.ToInt32(Console.ReadLine());
+            blog.DeleteById(posts, m);
+            break;
+        default:
             Console.WriteLine("Оберіть існуючий варіант");
             break;
     }
