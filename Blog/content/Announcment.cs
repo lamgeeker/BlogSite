@@ -13,10 +13,9 @@ namespace PostInfo
     {
         public bool IsUrgent { get; private set; }
         [JsonConstructor]
-        
-        public Announcment(string title, string content, Author author, int id, bool urgent) : base(title, content, author, id)
+        public Announcment(string title, string content, Author author, int id, bool isUrgent) : base(title, content, author, id)
         {
-            IsUrgent = urgent;
+            IsUrgent = isUrgent;
         }
 
 

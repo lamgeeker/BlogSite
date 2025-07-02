@@ -19,6 +19,7 @@ namespace PostInfo
         public Author Author { get; protected set; }
         public int ID { get; }
 
+        [JsonConstructor]
         public ContentItem(int id, string title, string content, Author author)
         {
 

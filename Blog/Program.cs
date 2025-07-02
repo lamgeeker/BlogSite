@@ -109,11 +109,16 @@ while (true)
             service.Save(posts);
             break;
         case "5":
+           
             var loaded = service.Load();
-            posts.AddRange(loaded);
-            Console.WriteLine($"{loaded.Count} елемент(ів) було завантажено з файлу.");
+            foreach (var Item in service.Load())
+            {
+                if (loaded.Contains(Item))
+                {
+                    posts.Add(Item);
+                }
+            }
             break;
-
 
 
         case "6":
