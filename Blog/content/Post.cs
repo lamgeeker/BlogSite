@@ -17,12 +17,6 @@ namespace PostInfo
         public string HeshTag { get; private set; }
 
         [JsonConstructor]
-        public Post(int id, string title, string content, Author author) : base(id, title, content, author)
-        {
-
-
-        }
-
         public Post(string title, string content, Author author, int id, string heshTag) : base(title, content, author, id)
         {
             HeshTag = heshTag;

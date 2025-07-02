@@ -14,12 +14,7 @@ namespace PostInfo
     {
         public Category Category { get; protected set; }
         [JsonConstructor]
-        public NewsItem(int id, string title, string content, Author author) : base(id, title, content, author)
-        {
-
-
-        }
-
+       
         public NewsItem(string title, string content, Author author, int id, Category category)
      : base(title, content, author, id)
         {

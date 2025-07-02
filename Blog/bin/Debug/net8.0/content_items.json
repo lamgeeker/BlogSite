@@ -2,15 +2,57 @@
   {
     "Type": "Post",
     "Data": {
-      "HeshTag": "5",
+      "HeshTag": "1",
+      "Title": "1",
+      "Content": "1",
+      "CreatedAt": "2025-07-02T14:10:13.1726944\u002B02:00",
+      "Author": {
+        "Name": "1",
+        "Surname": "1"
+      },
+      "ID": 1
+    }
+  },
+  {
+    "Type": "NewsItem",
+    "Data": {
+      "Category": 5,
       "Title": "1",
       "Content": "2",
-      "CreatedAt": "2025-07-02T13:21:30.9443937\u002B02:00",
+      "CreatedAt": "2025-07-02T14:10:23.8391145\u002B02:00",
       "Author": {
         "Name": "3",
         "Surname": "4"
       },
-      "ID": 1
+      "ID": 2
+    }
+  },
+  {
+    "Type": "Announcment",
+    "Data": {
+      "IsUrgent": false,
+      "Title": "1311",
+      "Content": "fsdg",
+      "CreatedAt": "2025-07-02T14:12:37.9203557\u002B02:00",
+      "Author": {
+        "Name": "dfhd",
+        "Surname": "sad"
+      },
+      "ID": 3
+    }
+  },
+  {
+    "Type": "Post",
+    "Data": {
+      "HeshTag": "ifehouijasv",
+      "Title": "hgshjkbjdk;f",
+      "Content": "asdfsijhosduaio",
+      "CreatedAt": "2025-07-02T14:12:44.1625999\u002B02:00",
+      "Author": {
+        "Name": "wefouhaol",
+        "Surname": "ashuifsda"
+      },
+      "ID": 4
     }
   }
 ]

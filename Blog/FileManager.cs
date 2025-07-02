@@ -48,37 +48,39 @@ namespace file
 
 
 
+
+
+
         public List<ContentItem> Load()
         {
-            if (!File.Exists(filePath))
-                return new List<ContentItem>();
+            if (!File.Exists(filePath) || new FileInfo(filePath).Length == 0)
+            {
+                return new List<ContentItem>(); // повертаємо порожній список
+            }
 
             string json = File.ReadAllText(filePath);
+
             var wrappers = JsonSerializer.Deserialize<List<ContentWrapper>>(json);
 
-            var result = new List<ContentItem>();
+            List<ContentItem> items = new List<ContentItem>();
 
             foreach (var wrapper in wrappers)
             {
-                switch (wrapper.Type)
+                ContentItem item = wrapper.Type switch
                 {
-                    case nameof(Post):
-                        result.Add(wrapper.Data.Deserialize<Post>());
-                        break;
-                    case nameof(NewsItem):
-                        result.Add(wrapper.Data.Deserialize<NewsItem>());
-                        break;
-                    case nameof(Announcment):
-                        result.Add(wrapper.Data.Deserialize<Announcment>());
-                        break;
-                    default:
-                        Console.WriteLine($"Невідомий тип: {wrapper.Type}");
-                        break;
-                }
+                    "Post" => wrapper.Data.Deserialize<Post>(),
+                    "NewsItem" => wrapper.Data.Deserialize<NewsItem>(),
+                    "Announcment" => wrapper.Data.Deserialize<Announcment>(),
+                    _ => null
+                };
+
+                if (item != null)
+                    items.Add(item);
             }
 
-            return result;
+            return items;
         }
+
     }
 
 }

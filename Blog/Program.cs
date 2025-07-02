@@ -5,10 +5,11 @@ using file;
 
 Console.OutputEncoding = UTF8Encoding.UTF8;
 
+
 List<ContentItem> posts = new();
 BlogSite blog = new BlogSite();
 ISaveService<ContentItem> service = new ContentItemSaveService();
-int nextId = posts.Any() ? posts.Max(p => p.ID) + 1 : 1;
+int nextId = service.Load().Count() + 1;
 
 while (true)
 {
@@ -112,7 +113,6 @@ while (true)
             posts.AddRange(loaded);
             Console.WriteLine($"{loaded.Count} елемент(ів) було завантажено з файлу.");
             break;
-
 
 
 
