@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace PostInfo
 {
+
     [Serializable]
-    class NewsItem : ContentItem, ISearchable 
+    class NewsItem : ContentItem, ISearchable
     {
         public Category Category { get; protected set; }
         [JsonConstructor]
@@ -47,9 +48,9 @@ namespace PostInfo
         }
     }
 
-    public enum  Category
+    public enum Category
     {
-        
+
         Спорт,
         Політика,
         Розваги,

@@ -3,20 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace PostInfo
 {
-    
-    public abstract class ContentItem: IIdentifiable
+
+    public abstract class ContentItem : IIdentifiable
     {
-       // public int Id { get; protected set; }
+        // public int Id { get; protected set; }
         public string Title { get; protected set; }
         public string Content { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
 
         public Author Author { get; protected set; }
-        public int ID { get;  }
+        public int ID { get; }
 
         public ContentItem(int id, string title, string content, Author author)
         {

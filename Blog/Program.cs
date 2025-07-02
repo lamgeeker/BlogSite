@@ -4,9 +4,11 @@ using System.Text;
 using file;
 
 Console.OutputEncoding = UTF8Encoding.UTF8;
-FileManager fileManager = new FileManager();
+
 List<ContentItem> posts = new();
 BlogSite blog = new BlogSite();
+ISaveService<ContentItem> service = new ContentItemSaveService();
+int nextId = posts.Any() ? posts.Max(p => p.ID) + 1 : 1;
 
 while (true)
 {
@@ -16,6 +18,8 @@ while (true)
     switch (choice)
     {
         case "1":
+            int id = nextId;
+            nextId++;
             Console.WriteLine("Оберіть тип контенту:");
             Console.WriteLine("1. Звичайний пост");
             Console.WriteLine("2. Новина");
@@ -51,7 +55,7 @@ while (true)
             Console.Write("Прізвище автора: ");
             string surname = Console.ReadLine();
             Author author = new Author(name, surname);
-            int id = posts.Count + 1;
+            
             ContentItem item = null;
             if (factory is AnnouncmentFactory)
             {
@@ -101,16 +105,18 @@ while (true)
             blog.ShowSortedList(posts);
             break;
         case "4":
-            fileManager.SaveToFile(posts);
+            service.Save(posts);
             break;
         case "5":
-            try
-            {
-                posts = fileManager.Load();
-            }
-            catch(Exception ex) { Console.WriteLine(ex.Message); }
+            var loaded = service.Load();
+            posts.AddRange(loaded);
+            Console.WriteLine($"{loaded.Count} елемент(ів) було завантажено з файлу.");
             break;
-            case "6":
+
+
+
+
+        case "6":
             Console.WriteLine("Введіть ключове слово, за яким буде здійснено пошук контенту");
             string word = Console.ReadLine();
             blog.ShowList(SearchHelper.SearchByWord(posts, word));

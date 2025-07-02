@@ -5,44 +5,80 @@ using System.Numerics;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 using PostInfo;
 namespace file
 {
-    class FileManager
+    public class ContentWrapper
     {
-        private const string filePath = @"C:\\Users\\Dream Machines\\Documents\\mCompany.txt";
-        public void SaveToFile(List<ContentItem> posts)
+        public string Type { get; set; }
+        public JsonElement Data { get; set; }
+    }
+
+
+    public class ContentItemSaveService : ISaveService<ContentItem>
+    {
+        private const string filePath = "content_items.json";
+
+        public void Save(List<ContentItem> items)
         {
+            List<ContentWrapper> existing = new List<ContentWrapper>();
 
-            var options = new JsonSerializerOptions
+            if (File.Exists(filePath))
             {
-                WriteIndented = true,
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-            };
+                string existingJson = File.ReadAllText(filePath);
+                if (!string.IsNullOrWhiteSpace(existingJson))
+                {
+                    existing = JsonSerializer.Deserialize<List<ContentWrapper>>(existingJson) ?? new List<ContentWrapper>();
+                }
+            }
 
-            List<ContentItem> existingPosts = Load(); // завантажити старі
+            var newItems = items.Select(item => new ContentWrapper
+            {
+                Type = item.GetType().Name,
+                Data = JsonSerializer.SerializeToElement(item, item.GetType())
+            });
 
-            existingPosts.AddRange(posts); // додати нові
+            existing.AddRange(newItems);
 
-            string json = JsonSerializer.Serialize(existingPosts, options);
-
-            File.WriteAllText(filePath, json); // перезаписати весь файл
-
-            Console.WriteLine("Пости успішно додано у файл.");
+            string finalJson = JsonSerializer.Serialize(existing, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, finalJson); // зберігаємо весь оновлений список
         }
+
+
+
         public List<ContentItem> Load()
         {
-            
-                string json = File.ReadAllText(filePath);
-                if (string.IsNullOrEmpty(json))
+            if (!File.Exists(filePath))
+                return new List<ContentItem>();
+
+            string json = File.ReadAllText(filePath);
+            var wrappers = JsonSerializer.Deserialize<List<ContentWrapper>>(json);
+
+            var result = new List<ContentItem>();
+
+            foreach (var wrapper in wrappers)
+            {
+                switch (wrapper.Type)
                 {
-                    Console.WriteLine("Файл порожній!");
-                    return new List<ContentItem> { };
+                    case nameof(Post):
+                        result.Add(wrapper.Data.Deserialize<Post>());
+                        break;
+                    case nameof(NewsItem):
+                        result.Add(wrapper.Data.Deserialize<NewsItem>());
+                        break;
+                    case nameof(Announcment):
+                        result.Add(wrapper.Data.Deserialize<Announcment>());
+                        break;
+                    default:
+                        Console.WriteLine($"Невідомий тип: {wrapper.Type}");
+                        break;
                 }
-                Console.WriteLine("Дані успішно виведені з файлу");
-                return JsonSerializer.Deserialize<List<ContentItem>>(json) ?? new List<ContentItem>();
-           
+            }
+
+            return result;
         }
     }
+
 }

@@ -1,0 +1,16 @@
+[
+  {
+    "Type": "Post",
+    "Data": {
+      "HeshTag": "5",
+      "Title": "1",
+      "Content": "2",
+      "CreatedAt": "2025-07-02T13:21:30.9443937\u002B02:00",
+      "Author": {
+        "Name": "3",
+        "Surname": "4"
+      },
+      "ID": 1
+    }
+  }
+]

@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace PostInfo
 {
+
     [Serializable]
     class Post : ContentItem, ISearchable
     {
@@ -41,7 +42,7 @@ namespace PostInfo
 
         public bool Matches(string keyword)
         {
-            if(Title.Contains(keyword) || Content.Contains(keyword) || HeshTag == keyword) 
+            if (Title.Contains(keyword) || Content.Contains(keyword) || HeshTag == keyword)
             {
                 return true;
             }
