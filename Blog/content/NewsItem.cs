@@ -10,11 +10,10 @@ namespace PostInfo
 {
 
     [Serializable]
-    class NewsItem : ContentItem, ISearchable
+    class NewsItem : ContentItem
     {
         public Category Category { get; protected set; }
         [JsonConstructor]
-       
         public NewsItem(string title, string content, Author author, int id, Category category)
      : base(title, content, author, id)
         {
@@ -33,14 +32,7 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-        public bool Matches(string keyword)
-        {
-            if (Title.Contains(keyword) || Content.Contains(keyword) || Category.ToString().Equals(keyword))
-            {
-                return true;
-            }
-            return false;
-        }
+       
     }
 
     public enum Category

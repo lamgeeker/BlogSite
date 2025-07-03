@@ -43,7 +43,7 @@ namespace file
             existing.AddRange(newItems);
 
             string finalJson = JsonSerializer.Serialize(existing, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(filePath, finalJson); // зберігаємо весь оновлений список
+            File.WriteAllText(filePath, finalJson); 
         }
 
 
@@ -55,7 +55,7 @@ namespace file
         {
             if (!File.Exists(filePath) || new FileInfo(filePath).Length == 0)
             {
-                return new List<ContentItem>(); // повертаємо порожній список
+                return new List<ContentItem>(); 
             }
 
             string json = File.ReadAllText(filePath);

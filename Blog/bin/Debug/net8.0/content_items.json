@@ -5,7 +5,7 @@
       "HeshTag": "5",
       "Title": "1",
       "Content": "2",
-      "CreatedAt": "2025-07-02T16:23:25.0279426\u002B02:00",
+      "CreatedAt": "2025-07-02T17:22:51.5931794\u002B02:00",
       "Author": {
         "Name": "3",
         "Surname": "4"
@@ -16,29 +16,15 @@
   {
     "Type": "NewsItem",
     "Data": {
-      "Category": 3,
+      "Category": 5,
       "Title": "1",
       "Content": "2",
-      "CreatedAt": "2025-07-02T16:27:20.6656657\u002B02:00",
+      "CreatedAt": "2025-07-03T14:57:25.3921376\u002B02:00",
       "Author": {
         "Name": "3",
         "Surname": "4"
       },
       "ID": 2
-    }
-  },
-  {
-    "Type": "Announcment",
-    "Data": {
-      "IsUrgent": false,
-      "Title": "1",
-      "Content": "2",
-      "CreatedAt": "2025-07-02T16:27:36.4511121\u002B02:00",
-      "Author": {
-        "Name": "3",
-        "Surname": "4"
-      },
-      "ID": 3
     }
   }
 ]

@@ -5,7 +5,7 @@ using file;
 
 Console.OutputEncoding = UTF8Encoding.UTF8;
 
-
+InvertedIndexManager invertedIndex = new InvertedIndexManager();
 List<ContentItem> posts = new();
 BlogSite blog = new BlogSite();
 ISaveService<ContentItem> service = new ContentItemSaveService();
@@ -61,7 +61,7 @@ while (true)
             if (factory is AnnouncmentFactory)
             {
                 Console.Write("Це термінове оголошення? (так/ні): ");
-                bool urgent = Console.ReadLine().Trim().ToLower() == "y";
+                bool urgent = Console.ReadLine().Trim().ToLower() == "так";
 
               
                 item = ((AnnouncmentFactory)factory).CreateContent(title, content, author, id, urgent);
@@ -123,8 +123,9 @@ while (true)
 
         case "6":
             Console.WriteLine("Введіть ключове слово, за яким буде здійснено пошук контенту");
-            string word = Console.ReadLine();
-            blog.ShowList(SearchHelper.SearchByWord(posts, word));
+            string keyWord = Console.ReadLine();
+            invertedIndex.BuildIndex(posts);
+            blog.ShowList(invertedIndex.Search(keyWord).ToList());
             break;
         case "7":
             Console.WriteLine("Введіть ID, за яким буде здійснений пошук контенту");
@@ -136,6 +137,7 @@ while (true)
             int m = Convert.ToInt32(Console.ReadLine());
             blog.DeleteById(posts, m);
             break;
+            
         default:
             Console.WriteLine("Оберіть існуючий варіант");
             break;

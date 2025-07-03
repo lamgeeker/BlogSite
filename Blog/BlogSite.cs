@@ -11,8 +11,6 @@ namespace Blog
     class BlogSite
     {
         
-
-     
         public void ShowList(List<ContentItem> list)
         {
             foreach (ContentItem item in list)

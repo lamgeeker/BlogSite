@@ -11,7 +11,7 @@ namespace PostInfo
 {
 
     [Serializable]
-    class Post : ContentItem, ISearchable
+    class Post : ContentItem
     {
 
         public string HeshTag { get; private set; }
@@ -34,13 +34,6 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-        public bool Matches(string keyword)
-        {
-            if (Title.Contains(keyword) || Content.Contains(keyword) || HeshTag == keyword)
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }

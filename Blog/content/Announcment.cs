@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace PostInfo
 {
     [Serializable]
-    class Announcment : ContentItem, ISearchable
-    {
+    class Announcment : ContentItem 
+    { 
         public bool IsUrgent { get; private set; }
         [JsonConstructor]
         public Announcment(string title, string content, Author author, int id, bool isUrgent) : base(title, content, author, id)
@@ -25,7 +25,7 @@ namespace PostInfo
             Console.WriteLine("--------------------------------------");
             Console.WriteLine($"ОГОЛОШЕННЯ");
             Console.WriteLine($"ID: {ID}");
-            Console.WriteLine($"Терміновість: {(IsUrgent ? "❗ Терміново" : "Звичайне")}");
+            Console.WriteLine($"Терміновість: {(IsUrgent ? "! Терміново" : "Звичайне")}");
             Console.WriteLine($"Заголовок: {Title}");
             Console.WriteLine($"Контент: {Content}");
             Console.WriteLine($"Автор: {Author.Name} {Author.Surname}");
@@ -33,13 +33,6 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-        public bool Matches(string keyword)
-        {
-            if (Title.Contains(keyword) || Content.Contains(keyword))
-            {
-                return true;
-            }
-            return false;
-        }
+       
     }
 }
