@@ -19,14 +19,14 @@ namespace Blog
     {
         
 
-        public static List<ContentItem> SearchById(List<ContentItem> posts, int id)
+        public static ContentItem SearchById(List<ContentItem> posts, int id)
         {
-            List<ContentItem> result = new();
+            ContentItem result = null;
             foreach (var item in posts)
             {
                 if(item is IIdentifiable identifiable && identifiable.ID == id)
                 {
-                    result.Add((ContentItem)item);
+                    result = item;
                 }
             }
             return result;

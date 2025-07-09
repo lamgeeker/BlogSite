@@ -33,6 +33,10 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-       
+        public void Update(string title, string content, bool isUrgent)
+        {
+            base.Update(title, content);
+            IsUrgent = isUrgent;
+        }
     }
 }

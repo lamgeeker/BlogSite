@@ -34,6 +34,13 @@ namespace PostInfo
         }
 
         public abstract void Display();
-
+        public virtual void Update(string title, string content)
+        {
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+                throw new ArgumentException("Порожній заголовок або контент");
+            Title = title;
+            Content = content;
+            CreatedAt = DateTime.Now;
+        }
     }
 }

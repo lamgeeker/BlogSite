@@ -34,6 +34,10 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-        
+        public void Update(string title, string content, string heshTag)
+        {
+            base.Update(title, content);
+            HeshTag = heshTag;
+        }
     }
 }
