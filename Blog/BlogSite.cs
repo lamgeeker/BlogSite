@@ -34,64 +34,58 @@ namespace Blog
                 item.Display();
             }
         }
-        
-        public void ChangeById(List<ContentItem> posts, int id)
+
+        public void ChangeById(int id, List<ContentItem> contentItems)
         {
-            if(SearchHelper.SearchById(posts, id) != null)
+            var item = contentItems.FirstOrDefault(c => c.ID == id);
+            if (item == null)
             {
-                Console.WriteLine("Оберіть поля, які хочете змінити  (пишіть циифри через пробіл)");
-                Console.WriteLine("Заголовок (1)");
-                Console.WriteLine("Вміст (2)");
-                Console.WriteLine("Автор (3)");
-                if(SearchHelper.SearchById(posts,id) is Post)
-                {
-                    Console.WriteLine("Хештег (4)");
-                }
-                else if(SearchHelper.SearchById(posts, id) is NewsItem)
-                {
-                    Console.WriteLine("Категорія (4)");
+                Console.WriteLine("Елемент з таким ID не знайдено.");
+                return;
+            }
 
-                }
-                else
-                    Console.WriteLine("Терміновість (4)");
+            Console.Write("Новий заголовок: ");
+            string newTitle = Console.ReadLine();
+            Console.Write("Новий контент: ");
+            string newContent = Console.ReadLine();
 
-                string polia = Console.ReadLine();
-                foreach(var i in polia.Split(' '))
-                {
-                    switch(i)
-                    {
-                        case "1":
-                            Console.WriteLine("Напишіть новий заголовок");
-                            SearchHelper.SearchById(posts, id).Title;
-                            break;
+            if (item is Post post)
+            {
+                Console.Write("Новий HeshTag: ");
+                string newHeshTag = Console.ReadLine();
+                post.Update(newTitle, newContent, newHeshTag);
+            }
+            else if (item is NewsItem news)
+            {
+               
+                var categories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList();
 
-                    }
-                }
-                /*Console.WriteLine("Змінити заголовок? (так/ні)");
-                bool  answer = Console.ReadLine().Trim().ToLower() == "так";
-                Console.WriteLine("Змінити контент? (так/ні)");
-                bool answer1 = Console.ReadLine().Trim().ToLower() == "так";
-                Console.WriteLine("Змінити автора? (так/ні)");
-                bool answer2 = Console.ReadLine().Trim().ToLower() == "так";
-                if(SearchHelper.SearchById(posts, id) is Post)
+                for (int i = 0; i < categories.Count; i++)
                 {
-                    Console.WriteLine("Змінити хештег? (так/ні)");
-                    bool answer3 = Console.ReadLine().Trim().ToLower() == "так";
+                    Console.WriteLine($"{i} - {categories[i]}");
                 }
-                else if(SearchHelper.SearchById(posts,id) is NewsItem) 
+                int selectedIndex;
+                while (!int.TryParse(Console.ReadLine(), out selectedIndex) || selectedIndex < 0 || selectedIndex >= categories.Count)
                 {
-                    Console.WriteLine("Змінити категорію? (так/ні)");
-                    bool answer4 = Console.ReadLine().Trim().ToLower() == "так";
+                    Console.WriteLine("Неправильний вибір. Спробуйте ще раз:");
                 }
-                else
-                {
-                    Console.WriteLine("Змінити терміновість? (так/ні)");
-                    bool answer5 = Console.ReadLine().Trim().ToLower() == "так";
-                }*/
+                Category selectedCategory = categories[selectedIndex];
+                news.Update(newTitle, newContent, selectedCategory);
+            }
+            else if (item is Announcment ann)
+            {
+                Console.Write("Це термінове оголошення? (так/ні): ");
+                bool isUrgent = Console.ReadLine().Trim().ToLower() == "так";
+                ann.Update(newTitle, newContent, isUrgent);
             }
             else
-                Console.WriteLine("Пост з таким id не знадено!");
+            {
+                item.Update(newTitle, newContent);
+            }
+
+            Console.WriteLine("Оновлено успішно.");
         }
+
 
         public List<ContentItem> DeleteById(List<ContentItem> posts, int id) 
         {

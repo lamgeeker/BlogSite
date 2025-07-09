@@ -32,7 +32,11 @@ namespace PostInfo
             Console.WriteLine("-------------------------------------");
         }
 
-       
+        public void Update(string title, string content, Category category)
+        {
+            base.Update(title, content);
+            Category = category;
+        }
     }
 
     public enum Category
