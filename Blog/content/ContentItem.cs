@@ -19,7 +19,6 @@ namespace PostInfo
         public Author Author { get; protected set; }
         public int ID { get; }
 
-        [JsonConstructor]
         public ContentItem(string title, string content, Author author, int id)
         {
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(author.Name) || string.IsNullOrWhiteSpace(author.Surname))
@@ -28,7 +27,18 @@ namespace PostInfo
             }
             Title = title;
             Content = content;
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.Now; // Встановлюємо поточну дату при створенні нового об'єкта
+            Author = author;
+            ID = id;
+        }
+
+        // Конструктор для десеріалізації (JsonConstructor)
+        [JsonConstructor]
+        public ContentItem(string title, string content, DateTime createdAt, Author author, int id)
+        {
+            Title = title;
+            Content = content;
+            CreatedAt = createdAt; // Встановлюємо дату з десеріалізації
             Author = author;
             ID = id;
         }

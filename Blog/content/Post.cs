@@ -16,8 +16,16 @@ namespace PostInfo
 
         public string HeshTag { get; private set; }
 
+        public Post(string title, string content, Author author, int id, string heshTag)
+         : base(title, content, author, id)
+        {
+            HeshTag = heshTag;
+        }
+
+        // JsonConstructor для Post
         [JsonConstructor]
-        public Post(string title, string content, Author author, int id, string heshTag) : base(title, content, author, id)
+        public Post(string title, string content, DateTime createdAt, Author author, int id, string heshTag)
+            : base(title, content, createdAt, author, id)
         {
             HeshTag = heshTag;
         }
