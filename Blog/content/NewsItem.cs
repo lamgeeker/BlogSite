@@ -13,11 +13,19 @@ namespace PostInfo
     class NewsItem : ContentItem
     {
         public Category Category { get; protected set; }
-        [JsonConstructor]
+   
         public NewsItem(string title, string content, Author author, int id, Category category)
-     : base(title, content, author, id)
+        : base(title, content, author, id)
         {
             Category = category;
+        }
+
+        // JsonConstructor для NewsItem
+        [JsonConstructor]
+        public NewsItem(string title, string content, DateTime createdAt, Author author, int id, Category category)
+            : base(title, content, createdAt, author, id)
+        {
+          Category = category;
         }
         public override void Display()
         {
@@ -34,6 +42,11 @@ namespace PostInfo
 
         public void Update(string title, string content, Category category)
         {
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content) || string.IsNullOrEmpty(category.ToString()))
+            {
+                Console.WriteLine("Не вдається оновити дані, атже введено некоректні дані");
+                return;
+            }
             base.Update(title, content);
             Category = category;
         }

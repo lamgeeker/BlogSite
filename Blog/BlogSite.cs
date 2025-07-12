@@ -83,7 +83,7 @@ namespace Blog
                 item.Update(newTitle, newContent);
             }
 
-            Console.WriteLine("Оновлено успішно.");
+           
         }
 
 

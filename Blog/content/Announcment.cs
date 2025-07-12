@@ -11,13 +11,20 @@ namespace PostInfo
     [Serializable]
     class Announcment : ContentItem 
     { 
-        public bool IsUrgent { get; private set; }
-        [JsonConstructor]
-        public Announcment(string title, string content, Author author, int id, bool isUrgent) : base(title, content, author, id)
+        public bool IsUrgent { get; protected set; }
+        public Announcment(string title, string content, Author author, int id, bool isUrgent)
+        : base(title, content, author, id)
         {
             IsUrgent = isUrgent;
         }
 
+   
+        [JsonConstructor]
+        public Announcment(string title, string content, DateTime createdAt, Author author, int id, bool isUrgent)
+            : base(title, content, createdAt, author, id)
+        {
+            IsUrgent = isUrgent;
+        }
 
 
         public override void Display()

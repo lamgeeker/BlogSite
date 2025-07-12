@@ -2,9 +2,16 @@
 using PostInfo;
 using System.Text;
 using file;
+using Delegates;
+
+static void Notificate()
+{
+    Console.WriteLine($"Оновлено {DateTime.Now}");
+}
 
 Console.OutputEncoding = UTF8Encoding.UTF8;
-
+var notifier = new UpdateNotification();
+notifier.OnNotification += Notificate;
 InvertedIndexManager invertedIndex = new InvertedIndexManager();
 List<ContentItem> posts = new();
 BlogSite blog = new BlogSite();
@@ -13,7 +20,7 @@ int nextId = service.Load().Count() + 1;
 
 while (true)
 {
-    try { 
+   
         Console.WriteLine("1----Додати новий пост\n2-----Вивести всі пости\n3-----Посортувати пости за датою створення і вивсети відсортований список\n4-----Зберегти всі пости у файл\n5-----Завантажити пости з файлу\n6------Знайти контент за ключовим словом\n7------Знайти контент за ID\n8------Видалити контент за ID\n9-------Змінити за id");
         string choice = Console.ReadLine();
         Console.WriteLine();
@@ -91,10 +98,12 @@ while (true)
                     string hashteg = Console.ReadLine();
                     item = ((PostFactory)factory).CreateContent(title, content, author, id, hashteg);
                 }
+            if (item != null)
+            {
 
                 posts.Add(item);
                 Console.WriteLine("Контент успішно створено.");
-
+            }
 
 
                 break;
@@ -107,9 +116,17 @@ while (true)
                 blog.ShowSortedList(posts);
                 break;
             case "4":
+            try
+            {
                 service.Save(posts);
-                break;
-            case "5":
+                Console.WriteLine("Пости успішно збережено у файл.");
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine($"Помилка при збереженні постів: {ex.Message}");
+            }
+            break;
+        case "5":
 
                 var loaded = service.Load();
                 foreach (var Item in service.Load())
@@ -142,6 +159,7 @@ while (true)
                 Console.WriteLine("Оберіть id поста, дані якого хочете редагувати");
                 int idi = Convert.ToInt32(Console.ReadLine());
                 blog.ChangeById(idi, posts);
+            notifier.Notify();
                 break;
             default:
                 Console.WriteLine("Оберіть існуючий варіант");
@@ -149,9 +167,4 @@ while (true)
         }
 
         }
-    catch(ArgumentException ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-    ca
-}
+    
