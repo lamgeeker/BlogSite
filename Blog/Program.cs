@@ -146,21 +146,41 @@ while (true)
                 blog.ShowList(invertedIndex.Search(keyWord).ToList());
                 break;
             case "7":
+            if (!posts.Any())
+            {
+                Console.WriteLine("Порожній список");
+                break;
+            }
                 Console.WriteLine("Введіть ID, за яким буде здійснений пошук контенту");
                 int n = Convert.ToInt32(Console.ReadLine());
+                if(SearchHelper.SearchById(posts, n) != null)
+                {
                 SearchHelper.SearchById(posts, n).Display();
-                break;
+                }
+                else
+                Console.WriteLine("Неправильно введене id");
+            break;
             case "8":
                 Console.WriteLine("Введіть ID, за яким буде видалений контент");
                 int m = Convert.ToInt32(Console.ReadLine());
                 blog.DeleteById(posts, m);
                 break;
             case "9":
+            if (!posts.Any())
+            {
+                Console.WriteLine("Список порожній!");
+                
+            }
+           else
+            {
                 Console.WriteLine("Оберіть id поста, дані якого хочете редагувати");
                 int idi = Convert.ToInt32(Console.ReadLine());
                 blog.ChangeById(idi, posts);
-            notifier.Notify();
-                break;
+                if(posts.Any(a => a.ID == idi))
+                    notifier.Notify();
+                
+            }
+            break;
             default:
                 Console.WriteLine("Оберіть існуючий варіант");
                 break;

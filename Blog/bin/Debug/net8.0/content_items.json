@@ -1,0 +1,41 @@
+[
+  {
+    "Type": "Post",
+    "Data": {
+      "Title": "1",
+      "Content": "2",
+      "CreatedAt": "2025-07-15T09:40:22.688697\u002B02:00",
+      "Author": {
+        "Name": "3",
+        "Surname": "4"
+      },
+      "ID": 1
+    }
+  },
+  {
+    "Type": "NewsItem",
+    "Data": {
+      "Title": "1",
+      "Content": "2",
+      "CreatedAt": "2025-07-15T09:40:44.0856218\u002B02:00",
+      "Author": {
+        "Name": "3",
+        "Surname": "4"
+      },
+      "ID": 2
+    }
+  },
+  {
+    "Type": "Announcment",
+    "Data": {
+      "Title": "1",
+      "Content": "2",
+      "CreatedAt": "2025-07-15T09:41:31.058472\u002B02:00",
+      "Author": {
+        "Name": "3",
+        "Surname": "4"
+      },
+      "ID": 3
+    }
+  }
+]
