@@ -21,12 +21,19 @@ namespace Blog
 
         public static ContentItem SearchById(List<ContentItem> posts, int id)
         {
+            
             ContentItem result = null;
+            if (!posts.Any()) return null;
             foreach (var item in posts)
             {
                 if(item is IIdentifiable identifiable && identifiable.ID == id)
                 {
                     result = item;
+                }
+                else
+                {
+                   
+                    return null;
                 }
             }
             return result;

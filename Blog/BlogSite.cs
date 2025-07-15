@@ -14,6 +14,11 @@ namespace Blog
         
         public void ShowList(List<ContentItem> list)
         {
+            if (!list.Any()) 
+            {
+                Console.WriteLine("Список порожній!");
+                return; 
+            }
             foreach (ContentItem item in list)
             {
                 item.Display();
@@ -22,13 +27,22 @@ namespace Blog
        
         public List<ContentItem> SortByTime(List<ContentItem> posts)
         {
-
+            if (!posts.Any())
+            {
+                Console.WriteLine("Список порожній!");
+                return posts;
+            }
             return posts.OrderBy(p => p.CreatedAt).ToList();
         }
 
         public void ShowSortedList(List<ContentItem> posts)
         {
-           SortByTime(posts);
+            if(!posts.Any())
+            {
+                Console.WriteLine("Список порожній!");
+                return;
+            }
+            SortByTime(posts);
             foreach (ContentItem item in posts)
             {
                 item.Display();
@@ -37,6 +51,7 @@ namespace Blog
 
         public void ChangeById(int id, List<ContentItem> contentItems)
         {
+            if (!contentItems.Any()) return;
             var item = contentItems.FirstOrDefault(c => c.ID == id);
             if (item == null)
             {
@@ -89,6 +104,11 @@ namespace Blog
 
         public List<ContentItem> DeleteById(List<ContentItem> posts, int id) 
         {
+            if (!posts.Any() || posts.All(x => x.ID != id))
+            {
+                Console.WriteLine("Список порожній або неіснуючий id");
+                return posts;
+            }
             posts.Remove(posts.Find(p => p.ID == id));
             return posts;
         }

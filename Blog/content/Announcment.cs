@@ -42,6 +42,8 @@ namespace PostInfo
 
         public void Update(string title, string content, bool isUrgent)
         {
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content))
+                throw new ArgumentException("Порожній заголовок або контент");
             base.Update(title, content);
             IsUrgent = isUrgent;
         }

@@ -44,6 +44,8 @@ namespace PostInfo
 
         public void Update(string title, string content, string heshTag)
         {
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(heshTag))
+                throw new ArgumentException("Порожній заголовок або контент");
             base.Update(title, content);
             HeshTag = heshTag;
         }
