@@ -9,6 +9,7 @@ static void Notificate()
     Console.WriteLine($"Оновлено {DateTime.Now}");
 }
 
+Logger logger = new Logger();
 Console.OutputEncoding = UTF8Encoding.UTF8;
 var notifier = new UpdateNotification();
 notifier.OnNotification += Notificate;
@@ -102,6 +103,7 @@ while (true)
             {
 
                 posts.Add(item);
+                logger.AddLog($"{item.Title} створено у {item.CreatedAt}");
                 Console.WriteLine("Контент успішно створено.");
             }
 
@@ -164,7 +166,8 @@ while (true)
                 Console.WriteLine("Введіть ID, за яким буде видалений контент");
                 int m = Convert.ToInt32(Console.ReadLine());
                 blog.DeleteById(posts, m);
-                break;
+            logger.AddLog($"Видалено у {DateTime.Now}");
+            break;
             case "9":
             if (!posts.Any())
             {
@@ -176,8 +179,11 @@ while (true)
                 Console.WriteLine("Оберіть id поста, дані якого хочете редагувати");
                 int idi = Convert.ToInt32(Console.ReadLine());
                 blog.ChangeById(idi, posts);
-                if(posts.Any(a => a.ID == idi))
+                if (posts.Any(a => a.ID == idi))
+                {
+                    logger.AddLog($"Редаговано у {DateTime.Now}");
                     notifier.Notify();
+                }
                 
             }
             break;
