@@ -20,7 +20,7 @@ namespace PostInfo
             Category = category;
         }
 
-        // JsonConstructor для NewsItem
+    
         [JsonConstructor]
         public NewsItem(string title, string content, DateTime createdAt, Author author, int id, Category category)
             : base(title, content, createdAt, author, id)
