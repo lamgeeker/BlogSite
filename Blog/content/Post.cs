@@ -22,7 +22,7 @@ namespace PostInfo
             HeshTag = heshTag;
         }
 
-        // JsonConstructor для Post
+
         [JsonConstructor]
         public Post(string title, string content, DateTime createdAt, Author author, int id, string heshTag)
             : base(title, content, createdAt, author, id)

@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace PostInfo
 {
+    public enum Status
+    {
+        Pending,
+        Approved,
+        Rejected
+    }
 
     public abstract class ContentItem : IIdentifiable
     {
        
+        public Status Status = Status.Pending;
         public string Title { get; protected set; }
         public string Content { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
@@ -27,18 +34,18 @@ namespace PostInfo
             }
             Title = title;
             Content = content;
-            CreatedAt = DateTime.Now; // Встановлюємо поточну дату при створенні нового об'єкта
+            CreatedAt = DateTime.Now; 
             Author = author;
             ID = id;
         }
 
-        // Конструктор для десеріалізації (JsonConstructor)
+
         [JsonConstructor]
         public ContentItem(string title, string content, DateTime createdAt, Author author, int id)
         {
             Title = title;
             Content = content;
-            CreatedAt = createdAt; // Встановлюємо дату з десеріалізації
+            CreatedAt = createdAt; 
             Author = author;
             ID = id;
         }
