@@ -18,7 +18,7 @@ List<ContentItem> posts = new();
 object locker = new object();
 BlogSite blog = new BlogSite();
 ISaveService<ContentItem> service = new ContentItemSaveService();
-int nextId = service.Load().Count() + 1;
+int nextId = service.LoadFromFileAsync(true).Result.Count() + 1;
 Moderator moderator = new Moderator(posts, locker);
 
 while (true)
@@ -143,7 +143,7 @@ while (true)
             {
                 lock (locker)
                 {
-                    service.Save(posts);
+                    service.SaveToFileAsync(posts);
                 }
                 Console.WriteLine("Пости успішно збережено у файл.");
             }
@@ -154,10 +154,10 @@ while (true)
             break;
         case "5":
 
-            var loaded = service.Load();
+            var loaded = service.LoadFromFileAsync(true);
             lock (locker)
             {
-                foreach (var Item in loaded)
+                foreach (var Item in loaded.Result)
                 {
                     if (!posts.Contains(Item))
                     {

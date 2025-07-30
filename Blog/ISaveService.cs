@@ -9,8 +9,8 @@ namespace file
 {
     public interface ISaveService<T> 
     {
-        void Save(List<T> items);
-        List<T> Load();
+        Task SaveToFileAsync(List<T> items);
+        Task<List<T>> LoadFromFileAsync(bool urLock);
     }
 
     
