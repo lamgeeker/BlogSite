@@ -14,25 +14,23 @@ namespace Blog
         private List<ContentItem> _mainContent;
         private readonly object _locker;
         public ConcurrentQueue<ContentItem> ToModerate;
-        private Thread Mythread;
+       
 
         public Moderator(List<ContentItem> mainContent, object locker)
         {
             _mainContent = mainContent;
             _locker = locker;
             ToModerate = new ConcurrentQueue<ContentItem>();
-            Mythread = new Thread(Moderate);
-            Mythread.IsBackground = true;
-            Mythread.Start();
+            Task.Run(Moderate);
         }
 
-        public void Moderate()
+        public async Task Moderate()
         {
             while (true)
             {
                 if (ToModerate.TryDequeue(out ContentItem post))
                 {
-                    Thread.Sleep(500);
+                    await Task.Delay(500);
                     if (post.Content != null && post.Title != null && post.Author != null)
                     {
                         post.Status = Status.Approved;
@@ -50,7 +48,7 @@ namespace Blog
                 }
                 else
                 {
-                    Thread.Sleep(50);
+                    await Task.Delay(200);
                 }
             }
         }

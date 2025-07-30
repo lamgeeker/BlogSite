@@ -15,6 +15,7 @@ namespace file
 
     public class ContentItemSaveService : ISaveService<ContentItem>
     {
+        private SemaphoreSlim _semaphore = new SemaphoreSlim(1);
         private const string filePath = "content_items.json";
 
         // Helper class for serialization/deserialization of polymorphic types
@@ -24,95 +25,90 @@ namespace file
             public JsonElement Data { get; set; }
         }
 
-        public void Save(List<ContentItem> itemsToSave)
+        public async Task SaveToFileAsync(List<ContentItem> itemsToSave)
         {
-            
-            List<ContentItem> existingItems = Load();
-
-           
-            Dictionary<int, ContentItem> allItemsMap = existingItems.ToDictionary(item => item.ID);
-
-           
-            foreach (var item in itemsToSave)
+           await  _semaphore.WaitAsync();
+            try
             {
-                allItemsMap[item.ID] = item;
-            }
+                var existingItems = await LoadFromFileAsync(false);
 
-          
-            List<ContentItem> uniqueItems = allItemsMap.Values.ToList();
 
-            
-            List<ContentWrapper> wrappersToSave = uniqueItems.Select(item =>
-            {
-                string typeName = item.GetType().Name;
-                return new ContentWrapper
+                Dictionary<int, ContentItem> allItemsMap = existingItems.ToDictionary(item => item.ID);
+
+
+                foreach (var item in itemsToSave)
                 {
-                    Type = typeName,
-                    Data = JsonSerializer.SerializeToElement(item)
-                };
-            }).ToList();
+                    allItemsMap[item.ID] = item;
+                }
 
-           
-            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
 
-           
-            string json = JsonSerializer.Serialize(wrappersToSave, options);
+                List<ContentItem> uniqueItems = allItemsMap.Values.ToList();
 
-     
-            File.WriteAllText(filePath, json);
-        }
 
-        public List<ContentItem> Load()
-        {
-           
-            if (!File.Exists(filePath) || new FileInfo(filePath).Length == 0)
-            {
-                return new List<ContentItem>();
-            }
-
-            
-            string json = File.ReadAllText(filePath);
-
-         
-            var wrappers = JsonSerializer.Deserialize<List<ContentWrapper>>(json);
-
-            List<ContentItem> items = new List<ContentItem>();
-
-            
-            foreach (var wrapper in wrappers)
-            {
-                ContentItem item = null; 
-                try
+                List<ContentWrapper> wrappersToSave = uniqueItems.Select(item =>
                 {
-                  
-                    item = wrapper.Type switch
+                    string typeName = item.GetType().Name;
+                    return new ContentWrapper
                     {
-                        nameof(Post) => wrapper.Data.Deserialize<Post>(),
-                        nameof(NewsItem) => wrapper.Data.Deserialize<NewsItem>(),
-                        nameof(Announcment) => wrapper.Data.Deserialize<Announcment>(),
-                        _ => throw new NotSupportedException($"Unknown content type: {wrapper.Type}")
+                        Type = typeName,
+                        Data = JsonSerializer.SerializeToElement(item)
                     };
-                }
-                catch (JsonException ex)
-                {
-                    Console.WriteLine($"Error deserializing item of type {wrapper.Type}: {ex.Message}");
-                  
-                    continue; 
-                }
-                catch (NotSupportedException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    continue;
-                }
+                }).ToList();
 
-                if (item != null)
-                {
-                    items.Add(item); 
-                }
+
+                JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
+
+                string json = JsonSerializer.Serialize(wrappersToSave, options);
+
+
+                await File.WriteAllTextAsync(filePath, json);
+                Task.WaitAll();
             }
-
-            return items;
+            finally { _semaphore.Release(); }
+            
         }
+
+        public async Task<List<ContentItem>> LoadFromFileAsync(bool useLock = true)
+        {
+            if (useLock)
+                await _semaphore.WaitAsync();
+            try
+            {
+                if (!File.Exists(filePath) || new FileInfo(filePath).Length == 0)
+                    return new List<ContentItem>();
+
+                string json = await File.ReadAllTextAsync(filePath);
+                var wrappers = JsonSerializer.Deserialize<List<ContentWrapper>>(json);
+                List<ContentItem> items = new List<ContentItem>();
+
+                foreach (var wrapper in wrappers)
+                {
+                    try
+                    {
+                        ContentItem item = wrapper.Type switch
+                        {
+                            nameof(Post) => wrapper.Data.Deserialize<Post>(),
+                            nameof(NewsItem) => wrapper.Data.Deserialize<NewsItem>(),
+                            nameof(Announcment) => wrapper.Data.Deserialize<Announcment>(),
+                            _ => null
+                        };
+                        if (item != null) items.Add(item);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+                return items;
+            }
+            finally
+            {
+                if (useLock)
+                    _semaphore.Release();
+            }
+        }
+
 
     }
 

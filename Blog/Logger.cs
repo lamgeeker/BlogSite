@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,10 @@ namespace file
     public class Logger
     {
         public ConcurrentQueue<string> logs = new ConcurrentQueue<string>();
-        private Thread Mythread;
+      
         public Logger() 
         {
-            Mythread = new Thread(LogProcessor);
-            Mythread.IsBackground = true;
-            Mythread.Start();
+            Task.Run(LogProcessor);
         }
 
         
@@ -26,8 +25,9 @@ namespace file
         }
 
 
-        public void LogProcessor()
+        public async Task LogProcessor()
         {
+           
            
             while (true)
             {
@@ -37,7 +37,7 @@ namespace file
                     {
                         Console.WriteLine(message);
                     }
-                    Thread.Sleep(200);
+                    await Task.Delay(500);
                 }
             }
         }
